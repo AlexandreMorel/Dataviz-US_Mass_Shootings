@@ -38,7 +38,7 @@
 
 </style>
 <head>
-	<h1>Us Mass Shooting Visualization</h1>
+	<h1>FATALITIES DUE TO MASS SHOOTINGS BY STATES IN THE USA</h1>
 </head>
 <body>
 	<script type="text/javascript">
@@ -150,6 +150,23 @@
 						return "rgb(255,255,178)";
 					} 
 				})
+
+				.on("mouseover", function (d) {
+						div.transition()
+							.duration(200)
+							.style("height", "30px")
+							.style("width", "120px")
+							.style("opacity", .9);
+						div.text(d.properties.name)
+							.style("left", (d3.event.pageX) + "px")
+							.style("top", (d3.event.pageY - 28) + "px")
+							.style("font-size", 12 + "px");
+					})
+					.on("mouseout", function (d) {
+						div.transition()
+							.duration(500)
+							.style("opacity", 0);
+					});
 
 			d3.csv("datasetv6.csv", function(data) {
 

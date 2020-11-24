@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
+<style type="text/css">
+    /* On mouse hover, lighten state color */
+	path:hover {
+		fill-opacity: .7;
+	}
+
+	/* Style for Custom Tooltip */
+	div.tooltip {   
+		position: absolute;           
+		text-align: center;           
+		width: 60px;                  
+		height: 28px;                 
+		padding: 2px;             
+		font: 12px sans-serif;        
+		background: white;   
+		border: 0px;      
+		border-radius: 8px;           
+		pointer-events: none;         
+	}
+			
+	/* Legend Font Style */
+	body {
+		font: 11px sans-serif;
+	}
+			
+	/* Legend Position Style */
+	.legend {
+		position:absolute;
+		left:800px;
+		top:400px;
+	}
+
+	.bigTitle{
+		margin-top:50px;
+	}
+</style>
+</head>
+<body>
+
+<div id="CarteUSA" class="bigTitle">
+	<h1>FATALITIES DUE TO MASS SHOOTINGS BY STATES IN THE USA</h1>
+</div>
+
+<script type="text/javascript" src="CarteUSA.js"></script>
+<script type="text/javascript" src="AttentatsParAnnées.js"></script>
+<script type="text/javascript" src="GenderPieChart.js"></script>
+<script type="text/javascript" src="AgeDuTerroriste.js"></script>
+
+</body>
+</html>
