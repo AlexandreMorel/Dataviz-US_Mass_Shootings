@@ -60,7 +60,7 @@
 		var color = d3.scale.linear()
 					.range(["rgb(255,255,178)", "rgb(254,204,92)", "rgb(253,141,60)", "rgb(227,26,28)"]);
 
-		var legendText = ["fatalities >= 50", "50 > fatalities >= 25", "25 > fatalities >= 1", "No fatalities"];
+		var legendText = ["+50 fatalities", "25-50 fatalitites", "1-25 fatalities", "No fatalities"];
 
 		//Create SVG element and append map to the SVG
 		var svg = d3.select("body")
