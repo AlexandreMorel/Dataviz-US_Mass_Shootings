@@ -43,7 +43,7 @@
         <script src="https://d3js.org/d3.v6.min.js"></script>
         <script>
 
-const reduce = data => {
+/*const reduce = data => {
     const dataset = {}
 
     data.filter(dataAge => dataAge.age_of_shooter).forEach(dataAge => {
@@ -60,6 +60,48 @@ const reduce = data => {
 
     return debug
     
+}*/
+
+const reduce = data => {
+    const dataset = {}
+
+    var mineurs=0;
+    var jeunes=0;
+    var moyens=0;
+    var senior=0;
+    var retraites=0;
+
+
+        data.forEach(crime => {
+            let cat_age=crime.classe_age;
+                        
+            if(cat_age==0){
+                mineurs += +1;
+            }else if(cat_age==1){
+                jeunes += +1;
+            }else if(cat_age==2){
+                moyens += +1;
+            }else if(cat_age==3){
+                senior += +1;
+            } else {
+                retraites += +1;
+            }
+        });
+                    
+        dataset['11-20']=mineurs;
+        dataset['21-30']=jeunes;
+        dataset['31-40']=moyens;
+        dataset['41-50']=senior;
+        dataset['51+']=retraites;
+
+        let debug = Object.keys(dataset).map(cat_age => ({
+        cat_age, dataset: dataset[cat_age]
+        }))
+
+        console.log(debug)
+
+        return debug
+
 }
 
 /*
@@ -82,11 +124,11 @@ const div = d3.select("#d3").append("div")
     .attr("class", "tooltip")         
         .style("opacity", 0)
 
-d3.csv("datasetv5.csv")
+d3.csv("Dataset_Clean.csv")
 .then(reduce)
 .then(data => {
     // Mise en relation du scale avec les données de notre fichier
-    x.domain(data.map(d => d.age))
+    x.domain(data.map(d => d.cat_age))
     y.domain([0, d3.max(data, d => d.dataset)])
 
     // Ajout de l'axe X au SVG
@@ -111,7 +153,7 @@ d3.csv("datasetv5.csv")
         .enter()
         .append("rect")
         .attr("class", "bar")
-        .attr("x", d => x(d.age))
+        .attr("x", d => x(d.cat_age))
         .attr("width", x.bandwidth())
         .attr("y", d => y(d.dataset))
         .attr("height", d => height - y(d.dataset))					
@@ -119,7 +161,7 @@ d3.csv("datasetv5.csv")
             div.transition()        
                 .duration(200)      
                 .style("opacity", .9);
-            div.html("Occurence: " + d.dataset)
+            div.html("Effectif: " + d.dataset)
                 .style("left", (event.x + 10) + "px")     
                 .style("top", (event.y - 50) + "px");
         })
