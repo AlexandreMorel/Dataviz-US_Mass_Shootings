@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-  <h1>SHOOTERS DISTRIBUTION BY GENDER</h1>
+  <h1>Shooter's gender distribution</h1>
 </head>
 
 <!-- Load d3.js -->
@@ -90,7 +90,7 @@
 
     // set the color scale
     var color = d3.scaleOrdinal()
-          .range(["rgb(241,163,64)", "rgb(153,142,195)"]);
+          .range(["#003f5c", "#ffa600"]);
         
     var legendText = ["Male", "Female"];
 
@@ -121,7 +121,7 @@
 					div.transition()        
 					.duration(200)      
 					.style("opacity", .9);      
-					div.text(d.data.key + ' ' + Math.round((d.data.value/120)*100) +'%')
+					div.text(Math.round((d.data.value/120)*100) +'%')
 					.style("left", (d3.event.pageX) + "px")     
 					.style("top", (d3.event.pageY - 28) + "px");    
 				})
